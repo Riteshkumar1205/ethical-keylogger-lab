@@ -1,26 +1,24 @@
-# Core system interaction and Windows instrumentation
-# WMI==1.4.9
-# pywin32
+# 🐧 Kali Linux - Ethical Keylogger Dependencies
 
-# Clipboard and keyboard monitoring
-clipboard==0.0.4
+# ── Clipboard and Keyboard Monitoring ─────────────────────────────
 pynput==1.4
+clipboard==0.0.4
 
-# GUI automation and screen capture
+# ── GUI Automation and Screenshot Capture ─────────────────────────
 PyAutoGUI==0.9.44
 pygetwindow>=0.0.9
 
-# Networking and HTTP
+# ── Networking and HTTP Requests ──────────────────────────────────
 requests==2.21.0
 
-# Security and encryption
+# ── Encryption and Secure Data Handling ───────────────────────────
 cryptography>=3.4.7
 
-# Email sending
-secure-smtplib  # optional; built into Python 3 but some environments may need this
+# ── Optional Email Compatibility Layer ────────────────────────────
+secure-smtplib  # Needed in some Linux distros
 
-# Logging and subprocess management
-psutil  # useful if you later monitor resource usage or running processes
+# ── System Resource Access (optional for enhancements) ────────────
+psutil>=5.9.0
 
-# Compatibility and packaging (recommended)
+# ── Build & Packaging Support ─────────────────────────────────────
 setuptools>=40.0.0
