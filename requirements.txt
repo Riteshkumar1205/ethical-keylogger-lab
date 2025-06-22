@@ -3,12 +3,12 @@ clipboard==0.0.4
 PyAutoGUI==0.9.44
 pygetwindow==0.0.9
 
-# Stable versions (compatible with Python 3.13+)
+# ✅ CLEAN working versions
 requests==2.31.0
 urllib3==2.2.1
 six==1.16.0
 
 cryptography==42.0.5
-secure-smtplib
 psutil==5.9.8
+secure-smtplib
 setuptools>=60.0.0
