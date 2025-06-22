@@ -1,4 +1,4 @@
-## 🔐 Enhanced Ethical Keylogger – Secure Monitoring Tool
+## 🔐  Ethical Keylogger – Secure Monitoring Tool
 **⚠️ Legal Notice:**
 This software is intended strictly for ethical, educational, and authorized research purposes. Unauthorized use—including monitoring someone’s keystrokes, clipboard data, or screen content without explicit, informed, and verifiable consent—violates local, national, and international privacy and cybersecurity laws. Misuse may result in civil lawsuits, criminal prosecution, fines, academic expulsion, or blacklisting. You, the user, are solely liable for any legal consequences arising from the misuse of this software.
 Always obtain informed, written consent before monitoring any system.
