@@ -1,26 +1,14 @@
-# 🐧 Kali Linux - Ethical Keylogger Dependencies
-
-# ── Clipboard and Keyboard Monitoring ─────────────────────────────
 pynput==1.4
 clipboard==0.0.4
-
-# ── GUI Automation and Screenshot Capture ─────────────────────────
 PyAutoGUI==0.9.44
-pygetwindow>=0.0.9
+pygetwindow==0.0.9
 
-# ── Networking and HTTP Requests ──────────────────────────────────
-requests>=2.28.0
-urllib3>=1.26.0
-six>=1.16.0
+# Stable versions (compatible with Python 3.13+)
+requests==2.31.0
+urllib3==2.2.1
+six==1.16.0
 
-# ── Encryption and Secure Data Handling ───────────────────────────
-cryptography>=3.4.7
-
-# ── Optional Email Compatibility Layer ────────────────────────────
-secure-smtplib  # Needed in some Linux distros
-
-# ── System Resource Access (optional for enhancements) ────────────
-psutil>=5.9.0
-
-# ── Build & Packaging Support ─────────────────────────────────────
-setuptools>=40.0.0
+cryptography==42.0.5
+secure-smtplib
+psutil==5.9.8
+setuptools>=60.0.0
