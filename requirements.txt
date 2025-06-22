@@ -1,6 +1,6 @@
 # Core system interaction and Windows instrumentation
-WMI==1.4.9
-pywin32
+# WMI==1.4.9
+# pywin32
 
 # Clipboard and keyboard monitoring
 clipboard==0.0.4
