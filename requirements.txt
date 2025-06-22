@@ -1,0 +1,26 @@
+# Core system interaction and Windows instrumentation
+WMI==1.4.9
+pywin32
+
+# Clipboard and keyboard monitoring
+clipboard==0.0.4
+pynput==1.4
+
+# GUI automation and screen capture
+PyAutoGUI==0.9.44
+pygetwindow>=0.0.9
+
+# Networking and HTTP
+requests==2.21.0
+
+# Security and encryption
+cryptography>=3.4.7
+
+# Email sending
+secure-smtplib  # optional; built into Python 3 but some environments may need this
+
+# Logging and subprocess management
+psutil  # useful if you later monitor resource usage or running processes
+
+# Compatibility and packaging (recommended)
+setuptools>=40.0.0
