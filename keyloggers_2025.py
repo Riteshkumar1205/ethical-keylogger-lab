@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 #  ██╗  ██╗███████╗██╗   ██╗██╗      ██████╗   ██████╗  ██████╗  ██████╗ ███████╗██████╗ 
@@ -8,8 +9,7 @@
 #  ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝ ╚═════╝   ╚═════╝  ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝
 #                                    KEYLOGGER (Linux Edition)
 
-# ⚠️  FOR EDUCATIONAL PURPOSES ONLY. USE WITH EXPLICIT CONSENT ⚠️
-# -*- coding: utf-8 -*-
+# ⚠️ FOR EDUCATIONAL PURPOSES ONLY. USE WITH EXPLICIT CONSENT ⚠️
 import os
 import tempfile
 import threading
