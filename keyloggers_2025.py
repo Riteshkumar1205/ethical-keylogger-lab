@@ -208,7 +208,7 @@ class EnhancedKeylogger:
         <hr>
         """
 
-    def start(self):
+       def start(self):
         try:
             consent = input("Do you have explicit consent to run this? (y/n): ")
             if consent.lower() != 'y':
@@ -226,6 +226,7 @@ class EnhancedKeylogger:
             logging.error(f"Runtime error: {e}")
         finally:
             logging.info("Keylogger session ended")
+
 
 if __name__ == "__main__":
     print("""
