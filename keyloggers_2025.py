@@ -9,7 +9,7 @@
 #                                    KEYLOGGER (Linux Edition)
 
 # ⚠️  FOR EDUCATIONAL PURPOSES ONLY. USE WITH EXPLICIT CONSENT ⚠️
-
+# -*- coding: utf-8 -*-
 import os
 import tempfile
 import threading
@@ -242,3 +242,4 @@ if __name__ == "__main__":
         keylogger.start()
     except Exception as e:
         logging.critical(f"Initialization failed: {e}")
+
