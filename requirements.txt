@@ -1,26 +1,11 @@
-# 📦 Safe Python 3.11+ Dependencies for Kali Linux Ethical Keylogger
-
-# ── Keyboard & Clipboard Monitoring ────────────────────────────────
-pynput==1.4                    # Capture keyboard events
-clipboard==0.0.4              # Read clipboard content
-
-# ── GUI Automation & Screenshot Capture ────────────────────────────
-PyAutoGUI==0.9.44             # Automate mouse/keyboard + take screenshots
-pygetwindow>=0.0.9            # Get active window title (used in PyAutoGUI)
-
-# ── HTTP Requests & Networking ─────────────────────────────────────
-requests>=2.28.0              # Send email, fetch public IP, etc.
-urllib3>=1.26.0               # Used internally by `requests`
-six>=1.16.0                   # Required by urllib3 (Python 2/3 compatibility)
-
-# ── Encryption & Secure Data Handling ──────────────────────────────
-cryptography>=3.4.7           # Encrypt keystrokes and logs
-
-# ── Email Support (if needed) ──────────────────────────────────────
-secure-smtplib                # SMTP over TLS/SSL (needed in some environments)
-
-# ── System Monitoring (optional enhancement) ───────────────────────
-psutil>=5.9.0                 # Used for advanced system info (optional)
-
-# ── Build Tools ────────────────────────────────────────────────────
-setuptools>=40.0.0            # Required for packaging/install compatibility
+pynput==1.4
+clipboard==0.0.4
+PyAutoGUI==0.9.44
+pygetwindow>=0.0.9
+requests>=2.28.0
+urllib3>=1.26.0
+six>=1.16.0
+cryptography>=3.4.7
+secure-smtplib
+psutil>=5.9.0
+setuptools>=40.0.0
