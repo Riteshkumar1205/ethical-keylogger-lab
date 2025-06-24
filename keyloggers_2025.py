@@ -12,6 +12,8 @@
 # ⚠️ FOR EDUCATIONAL PURPOSES ONLY. USE WITH EXPLICIT CONSENT ⚠️
 #!/usr/bin/env python3
 #!/usr/bin/env python3
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 import os
 import tempfile
